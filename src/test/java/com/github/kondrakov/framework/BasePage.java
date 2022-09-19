@@ -58,7 +58,9 @@ public class BasePage {
 
 
     public void switchTab() {
-        List<String> tabs2 = new ArrayList<>(WebDriverSingleton.getInstance().getWindowHandles());
-        WebDriverSingleton.getInstance().switchTo().window(tabs2.get(1));
+        List<String> tabs = new ArrayList<>(WebDriverSingleton.getInstance().getWindowHandles());
+        WebDriverSingleton.getInstance().switchTo().window(tabs.get(0));
+        WebDriverSingleton.getInstance().close();
+        WebDriverSingleton.getInstance().switchTo().window(tabs.get(1));
     }
 }
