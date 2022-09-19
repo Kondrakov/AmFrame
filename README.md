@@ -18,3 +18,4 @@ Note todoes (can be implement in future, just notes for myself):
 - Test Steps classes for AOP approach to standard actions
 - *.properties file to store paths and more
 - pom management for full pipeline from build to jar artifacts
+- Test runner
