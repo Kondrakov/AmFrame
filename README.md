@@ -19,3 +19,4 @@ Note todoes (can be implement in future, just notes for myself):
 - *.properties file to store paths and more
 - pom management for full pipeline from build to jar artifacts
 - Test runner
+- Annotations for results publishing impl
