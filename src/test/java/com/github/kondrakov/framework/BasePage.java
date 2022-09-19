@@ -1,13 +1,11 @@
 package com.github.kondrakov.framework;
 
+import com.github.kondrakov.framework.helpers.Waits;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.lang.reflect.Field;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,18 +34,14 @@ public class BasePage {
 
     public void clickElement(String id) {
         ElementId elementId = getElementDesc(id);
-        WebElement webElement = new WebDriverWait(
-                WebDriverSingleton.getInstance(), Duration.ofSeconds(10)
-        ).until(ExpectedConditions.elementToBeClickable(By.xpath(elementId.xpath())));
+        WebElement webElement = Waits.toBeClickableWait(elementId.xpath());
 
         webElement.click();
     }
 
     public void clickElementsByIndex(String id, int index) {
         ElementId elementId = getElementDesc(id);
-        new WebDriverWait(
-                WebDriverSingleton.getInstance(), Duration.ofSeconds(10)
-        ).until(ExpectedConditions.elementToBeClickable(By.xpath(elementId.xpath())));
+        Waits.toBeClickableWait(elementId.xpath());
 
         List<WebElement> elements = WebDriverSingleton.getInstance().findElements(By.xpath(elementId.xpath()));
 
@@ -56,9 +50,7 @@ public class BasePage {
 
     public void checkElementText(String id, String text) {
         ElementId elementId = getElementDesc(id);
-        WebElement webElement = new WebDriverWait(
-                WebDriverSingleton.getInstance(), Duration.ofSeconds(20)
-        ).until(ExpectedConditions.elementToBeClickable(By.xpath(elementId.xpath())));
+        WebElement webElement = Waits.toBeClickableWait(elementId.xpath());
 
         Assert.assertEquals(String.format("Expected text is %s but actual is %s", text, webElement.getText()),
                 text, webElement.getText());
